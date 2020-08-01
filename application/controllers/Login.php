@@ -10,7 +10,11 @@ class Login extends CI_Controller {
 	}
 
 	public function index()	{
-		$this->load->view('login');
+		if($this->session->userdata('akses')==null) {
+			$this->load->view('login');
+		} else {
+			$this->mMaster->LoadPage($this->session->userdata('akses'), strtolower($this->session->userdata('akses')));
+		}
 	}
 
 	function auth() {
