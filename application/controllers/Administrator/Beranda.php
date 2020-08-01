@@ -3,6 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Beranda extends CI_Controller {
 	public function index() {
-		$this->mMaster->LoadPage('administrator');
+		$this->mMaster->LoadPage($this->session->userdata('akses'), 'administrator');
 	}
 }

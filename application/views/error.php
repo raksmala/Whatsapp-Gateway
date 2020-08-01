@@ -1,3 +1,4 @@
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -23,32 +24,29 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>ElaAdmin-master/assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 </head>
 <body class="bg-dark">
 
+<?php
+    if($this->session->userdata('akses')=='1') {
+        $beranda = 'superadmin';
+    } else if($this->session->userdata('akses')=='2') {
+        $beranda = 'administrator';
+    }else if($this->session->userdata('akses')=='3') {
+        $beranda = 'pengelola';
+    }
+?>
+
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">
-                <div class="login-logo">
-                    <img class="align-content" src="<?php echo base_url(); ?>ElaAdmin-master/images/pnm2.png" alt="">
-                </div>
                 <div class="login-form">
-                    <form action="<?php echo base_url().'Login/auth'?>" method="post">
-                        <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" class="form-control" placeholder="Username" name="username" id="username">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password" name="password" id="password">
-                        </div>
-                        <div class="col-md-12 mb-4" style="text-align: center; color: #E74C3C; font: bold;">
-                            <?php echo $this->session->flashdata('msg'); ?>
-                        </div>
-                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Masuk</button>
-                    </form>
+                    <div class="login-logo">
+                        <h2>Anda Tidak Memiliki Hak Untuk Mengakses Halaman Ini</h2><br>
+                        <br>
+                        <a class="btn btn-secondary btn-flat m-b-15" href="<?php echo base_url($beranda); ?>"> Beranda</a>
+                    </div>
                 </div>
             </div>
         </div>

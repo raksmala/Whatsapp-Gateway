@@ -99,8 +99,8 @@
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="./">WA Gateway</a>
-                    <a class="navbar-brand hidden" href="./">WA Gateway</a>
+                    <a class="navbar-brand" href="./"><img class="mr-3" src="<?php echo base_url(); ?>ElaAdmin-master/images/pnm3.png" alt="Logo">WA Gateway</a>
+                    <a class="navbar-brand hidden" href="./"><img class="mr-3" src="<?php echo base_url(); ?>ElaAdmin-master/images/pnm3.png" alt="Logo">WA Gateway</a>
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
@@ -192,7 +192,7 @@
 
                             <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="<?php echo base_url().'Login/logout'?>"><i class="fa fa-power -off"></i>Logout</a>
                         </div>
                     </div>
 

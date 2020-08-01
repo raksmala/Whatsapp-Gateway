@@ -77,7 +77,7 @@
                         <a href="<?php echo base_url('Administrator/Beranda');?>"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
                     <li <?php if($this->uri->segment(2)=="Sekolah"){echo 'class="active"';} ?>>
-                        <a href="<?php echo base_url('Administrator/Sekolah');?>"> <i class="menu-icon fa fa-building-o"></i>Profil Sekolah</a>
+                        <a href="<?php echo base_url('Administrator/Sekolah');?>"> <i class="menu-icon fa fa-building-o"></i>Sekolah</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -90,8 +90,8 @@
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="./">WA Gateway</a>
-                    <a class="navbar-brand hidden" href="./">WA Gateway</a>
+                    <a class="navbar-brand" href="./"><img class="mr-3" src="<?php echo base_url(); ?>ElaAdmin-master/images/pnm3.png" alt="Logo">WA Gateway</a>
+                    <a class="navbar-brand hidden" href="./"><img class="mr-3" src="<?php echo base_url(); ?>ElaAdmin-master/images/pnm3.png" alt="Logo">WA Gateway</a>
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
@@ -183,7 +183,7 @@
 
                             <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="<?php echo base_url().'Login/logout'?>"><i class="fa fa-power -off"></i>Logout</a>
                         </div>
                     </div>
 
