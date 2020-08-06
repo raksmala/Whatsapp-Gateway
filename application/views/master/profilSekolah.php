@@ -2,11 +2,11 @@
     <div class="animated fadeIn">
         <div class="row">
         
-        <div class="col-lg-5">
-            <div class="card">
-                <div class="card-header"><strong>Logo Sekolah</strong></div>
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="card-header"><strong>Logo Sekolah</strong></div>
                     <div class="card-body card-block">
-                        <div class="row form-group" style="justify-content: center;">
+                        <div id="uploadedLogo" class="row form-group" style="justify-content: center;">
                             <img class="user-avatar rounded-circle mt-3 mb-3" id="tampilanLogo" name="tampilanLogo" style="width:200px; height:200px;" src="<?php echo base_url(); ?>ElaAdmin-master/images/pnm.png" alt="User Avatar">
                         </div>
                         <div class="row form-group">
@@ -17,64 +17,76 @@
                         </div>
                         <div id="uploadedImage"></div>
                     </div>
+                </div>
             </div>
-        </div>
         
             <div class="col-lg-7">
                 <div class="card">
                     <div class="card-header"><strong>Data Sekolah</strong></div>
                     <div class="card-body card-block">
-                            <div class="row form-group">
-                                <label for="npsn" class="col-md-4 form-control-label" style="text-align: right;">NPSN</label>
-                                <div class="col-md-4">
-                                    <input type="text" id="npsn" name="npsn" placeholder="NPSN" class="form-control">
-                                </div>
+                        <div class="row form-group">
+                            <label for="npsn" class="col-md-4 form-control-label" style="text-align: right;">NPSN</label>
+                            <div class="col-md-4">
+                                <input type="text" id="npsn" name="npsn" placeholder="NPSN" class="form-control">
                             </div>
-                            <div class="row form-group">
-                                <label for="nama" class="col-md-4 form-control-label" style="text-align: right;">Nama Sekolah</label>
-                                <div class="col-md-8">
-                                    <input type="text" id="namaSekolah" placeholder="Masukkan nama sekolah" class="form-control">
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="nama" class="col-md-4 form-control-label" style="text-align: right;">Nama Sekolah</label>
+                            <div class="col-md-8">
+                                <input type="text" id="namaSekolah" placeholder="Masukkan nama sekolah" class="form-control">
                             </div>
-                            <div class="row form-group">
-                                <label for="alamat" class="col-md-4 form-control-label" style="text-align: right;">Alamat</label>
-                                <div class="col-md-8">
-                                    <input type="text" id="alamatSekolah" placeholder="Masukkan alamat sekolah" class="form-control">
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="alamat" class="col-md-4 form-control-label" style="text-align: right;">Alamat</label>
+                            <div class="col-md-8">
+                                <input type="text" id="alamatSekolah" placeholder="Masukkan alamat sekolah" class="form-control">
                             </div>
-                            <div class="row form-group">
-                                <label for="noTlp" class="col-md-4 form-control-label" style="text-align: right;">Telepon</label>
-                                <div class="col-md-4">
-                                    <input type="tel" id="noTlp" placeholder="Nomor telepon" class="form-control">
-                                </div>    
+                        </div>
+                        <div class="row form-group">
+                            <label for="noTlp" class="col-md-4 form-control-label" style="text-align: right;">Telepon</label>
+                            <div class="col-md-4">
+                                <input type="tel" id="noTlp" placeholder="Nomor telepon" class="form-control">
+                            </div>    
+                        </div>
+                        <div class="row form-group">
+                            <label for="email" class="col-md-4 form-control-label" style="text-align: right;">Email</label>
+                            <div class="col-md-8">
+                                <input type="text" id="emailSekolah" placeholder="Masukkan email sekolah" class="form-control">
                             </div>
-                            <div class="row form-group">
-                                <label for="email" class="col-md-4 form-control-label" style="text-align: right;">Email</label>
-                                <div class="col-md-8">
-                                    <input type="text" id="emailSekolah" placeholder="Masukkan email sekolah" class="form-control">
-                                </div>
+                        </div>
+                        <div class="row form-group">
+                            <label for="namaKepala" class="col-md-4 form-control-label" style="text-align: right;">Kepala Sekolah</label>
+                            <div class="col-md-8">
+                                <input type="text" id="kepalaSekolah" placeholder="Masukkan nama kepala sekolah" class="form-control">
                             </div>
-                            <div class="row form-group">
-                                <label for="namaKepala" class="col-md-4 form-control-label" style="text-align: right;">Kepala Sekolah</label>
-                                <div class="col-md-8">
-                                    <input type="text" id="kepalaSekolah" placeholder="Masukkan nama kepala sekolah" class="form-control">
-                                </div>
-                            </div>  
-                            <div class="row form-group">
-                                <label for="noHp" class="col-md-4 form-control-label" style="text-align: right;">Nomor HP</label>
-                                <div class="col-md-4">
-                                    <input type="tel" id="noHp" placeholder="Nomor hp" class="form-control">
-                                </div>
+                        </div>  
+                        <div class="row form-group">
+                            <label for="noHp" class="col-md-4 form-control-label" style="text-align: right;">Nomor HP</label>
+                            <div class="col-md-4">
+                                <input type="tel" id="noHp" placeholder="Nomor hp" class="form-control">
                             </div>
-                            <button type="submit" class="btn btn-primary" style="float: right;">Simpan</button>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="float: right;">Simpan</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header"><strong>Logo Sekolah</strong></div>
+                    <div class="card-body card-block">
+                        <input type="file" name="upload_image" id="upload_image" />
+                        <br/>
+                        <div id="uploaded_image"></div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div><!-- .animated -->
 </div><!-- .content -->
 
-<div id="uploadImageModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
+<div id="uploadimageModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -87,7 +99,7 @@
             <div class="modal-body">
                 <div class="row">
                 <div class="col-md-12 text-center">
-                    <div id="imageDemo"></div>
+                    <div id="image_demo"></div>
                 </div>
                 </div>
             </div>
@@ -101,6 +113,34 @@
 <div class="clearfix"></div>
 
 <script>
+        $(document).ready(function() {
+          $image_crop = $('#image_demo').croppie({
+              enableExif: true,
+              viewport: {
+                  width: 250,
+                  height: 250,
+                  type: 'circle'
+              },
+            boundary: {
+                width: 350.
+                height: 350,
+            }
+          });
+
+          $('#upload_image').on('change', function(){
+            var reader = new FileReader();
+            reader.onload = function(event) { 
+                $image_crop.croppie('bind', {
+                    url: event.target.result
+                }).then(function() {
+                    console.log("Sukses");
+                });
+            };
+            reader.readAsDataURL(this.files[0]);
+            $('uploadimageModal').modal('show');
+          });
+        });
+
     function upload() {
         document.getElementById("uploadLogo").click();
     };

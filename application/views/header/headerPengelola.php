@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>ElaAdmin-master/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>ElaAdmin-master/assets/css/lib/datatable/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>ElaAdmin-master/assets/css/lib/datatable/buttons.bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>ElaAdmin-master/assets/css/lib/datatable/buttons.dataTables.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>ElaAdmin-master/assets/css/style.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>ElaAdmin-master/assets/css/lib/chosen/chosen.min.css">
 
@@ -31,7 +33,7 @@
     <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>Croppie-master/croppie.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -192,7 +194,7 @@
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+                            <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile </a>
 
                             <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
 

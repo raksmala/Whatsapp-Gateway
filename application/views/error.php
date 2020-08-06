@@ -35,6 +35,8 @@
         $page = 'Administrator';
     }else if($this->session->userdata('akses')=='Pengelola') {
         $page = 'Pengelola';
+    }else {
+        redirect(base_url());
     }
 ?>
 

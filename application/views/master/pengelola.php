@@ -6,6 +6,7 @@
                 <div class="card" style="height: 62vh">
                     <div class="card-header"><strong>Beranda Pengelola</strong></div>
                     <div class="card-body card-block">
+                    <?php echo $this->session->userdata('npsn'); ?>
                     </div>
                 </div>
             </div>

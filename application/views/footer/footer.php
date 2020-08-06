@@ -16,7 +16,7 @@
     <!-- /#right-panel -->
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
@@ -40,7 +40,7 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
     <script src="<?php echo base_url(); ?>ElaAdmin-master/assets/js/init/fullcalendar-init.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+    <script src="<?php echo base_url(); ?>Croppie-master/croppie.min.js"></script>
 
     <!--Data Table-->
     <script src="<?php echo base_url(); ?>ElaAdmin-master/assets/js/lib/data-table/datatables.min.js"></script>
@@ -70,49 +70,18 @@
             width: "100%"
         });
         
-        $image_crop = $('#imageDemo').croppie({
-        enableExif: true,
-        viewport: {
-        width:250,
-        height:200,
-        type:'circle'
-        },
-        boundary:{
-        width:300,
-        height:300
-        }
-    });
-    
-    $('#uploadImage').on('change', function(){
-        var reader = new FileReader();
-        reader.onload = function (event) {
-        $image_crop.croppie('bind', {
-            url: event.target.result
-        }).then(function(){
-            console.log('jQuery bind complete');
-        });
-        }
-        reader.readAsDataURL(this.files[0]);
-        $('#uploadImageModal').modal('show');
-    });
-    
-    $('.crop_image').click(function(event){
-        $image_crop.croppie('result', {
-        type: 'canvas',
-        size: 'viewport'
-        }).then(function(response){
-        $.ajax({
-            url:"upload.php",
-            type: "POST",
-            data:{"image": response},
-            success:function(data)
-            {
-            $('#uploadImageModal').modal('hide');
-            $('#uploadedImage').html(data);
-            }
-        });
-        })
-    });
+    $uploadCrop = $('#uploadedLogo').croppie({
+    enableExif: true,
+    viewport: {
+        width: 200,
+        height: 200,
+        type: 'circle'
+    },
+    boundary: {
+        width: 300,
+        height: 300
+    }
+});
     });
 </script>
 </body>

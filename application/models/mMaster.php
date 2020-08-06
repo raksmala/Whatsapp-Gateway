@@ -1,6 +1,6 @@
 <?php 
  class mMaster extends CI_Model{
-	function LoadPage($akses, $page, $data=null) {
+	function LoadPage($akses, $page, $data) {
 		if($this->session->userdata('masuk')) {
 			if($this->session->userdata('akses')==$akses) {
 				$this->load->view('header/header'.$akses, $data);
@@ -21,4 +21,16 @@
 			$this->session->set_userdata('masuk',FALSE);
 		}
 	}
+
+	function TampilData($select, $from, $join, $where) {
+        $this->db->select($select);
+		$this->db->from($from);
+		foreach($join as $table=>$on) {
+			$this->db->join($table, $on);
+		}
+		foreach($where as $condition1=>$condition2) {
+			$this->db->where("" .$condition1. " " .$condition2. "");
+		}
+        return $this->db->get();
+    }
 }

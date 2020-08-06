@@ -49,15 +49,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>0000278372</td>
-                                    <td>Rendy Kharisma Aksmala</td>
-                                    <td>Laki-laki</td>
-                                    <td>Jalan Mangga, Kota Madiun</td>
-                                    <td>12 Ipa 6</td>
-                                    <td>SMA Negeri 1 Kota Madiun</td>
-                                    <td>Akhmad Subkhan</td>
-                                </tr>
+                            <?php 
+                            foreach($query->result() as $row){ 
+                            echo "<tr>
+                                    <td>" .$row->nisn. "</td>
+                                    <td>" .$row->namaSiswa. "</td>
+                                    <td>" .$row->jenisKelamin. "</td>
+                                    <td>" .$row->alamatSiswa. "</td>
+                                    <td>" .$row->namaKelas. "</td>
+                                    <td>" .$row->namaSekolah. "</td>
+                                    <td>" .$row->namaOrangtua. "</td>
+                                </tr>";
+                            } 
+                            ?>
                             </tbody>
                         </table>
                     </div>
