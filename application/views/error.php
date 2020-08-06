@@ -29,12 +29,12 @@
 <body class="bg-dark">
 
 <?php
-    if($this->session->userdata('akses')=='1') {
-        $beranda = 'superadmin';
-    } else if($this->session->userdata('akses')=='2') {
-        $beranda = 'administrator';
-    }else if($this->session->userdata('akses')=='3') {
-        $beranda = 'pengelola';
+    if($this->session->userdata('akses')=='Superadmin') {
+        $page = 'Superadmin';
+    } else if($this->session->userdata('akses')=='Administrator') {
+        $page = 'Administrator';
+    }else if($this->session->userdata('akses')=='Pengelola') {
+        $page = 'Pengelola';
     }
 ?>
 
@@ -45,7 +45,7 @@
                     <div class="login-logo">
                         <h2>Anda Tidak Memiliki Hak Untuk Mengakses Halaman Ini</h2><br>
                         <br>
-                        <a class="btn btn-secondary btn-flat m-b-15" href="<?php echo base_url($beranda); ?>"> Beranda</a>
+                        <a class="btn btn-secondary btn-flat m-b-15" href="<?php echo base_url($page.'/Beranda', $this->session->set_userdata('masuk', TRUE)); ?>"> Beranda</a>
                     </div>
                 </div>
             </div>

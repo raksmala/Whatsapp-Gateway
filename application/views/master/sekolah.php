@@ -31,10 +31,13 @@
                         <strong class="card-title">Data Sekolah</strong>
                     </div>
                     <div class="card-body">
+                        <div style="width: 100%; text-align: right; margin-bottom: 10px;">
+                            <a href="#" class="on-default edit-row btn btn-success mr-3" data-toggle="modal" data-target="#addModal" onclick="Reset()"><i class="fa fa-plus"></i></a>
+                        </div>
+
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>No</th>
                                     <th>NPSN</th>
                                     <th>Nama Sekolah</th>
                                     <th>Alamat</th>
@@ -46,7 +49,6 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</td>
                                     <td>20534125</td>
                                     <td>SMA Negeri 1 Kota Madiun</td>
                                     <td>Jalan Mastrip No.19 Kota Madiun</td>
@@ -64,5 +66,69 @@
 
         </div>
     </div><!-- .animated -->
+
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mediumModalLabel">Data Sekolah</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="#" method="post" class="form-horizontal" role="form">
+                    <div class="modal-body">
+                        <div class="row form-group">
+                            <label class="col-md-3 form-control-label" style="text-align: right;">NPSN</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="npsn" name="npsn" required>
+                            </div>
+                        </div>                                  
+                        <div class="row form-group">
+                            <label class="col-md-3 form-control-label" style="text-align: right;">Nama Sekolah</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="namaSekolah" name="namaSekolah" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-md-3 form-control-label" style="text-align: right;">Alamat</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="alamatSekolah" name="alamatSekolah" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-md-3 form-control-label" style="text-align: right;">Telepon</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="noTlp" name="noTlp" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-md-3 form-control-label" style="text-align: right;">Email</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-md-3 form-control-label" style="text-align: right;">Nama Kepala Sekolah</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="kepalaSekolah" name="kepalaSekolah" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label class="col-md-3 form-control-label" style="text-align: right;">No HP</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="noHp" name="noHp" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div><!-- .content -->
 <div class="clearfix"></div>
