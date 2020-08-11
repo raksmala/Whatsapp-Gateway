@@ -13,7 +13,7 @@
                             <div class="col col-6 mx-auto" style="text-align: center;"><label for="username" class=" form-control-label"><strong>Nama Sekolah</strong></label></div>
                         </div>
                         <div class="row form-group" style="justify-content: center;">
-                            <input type="file" id="upload_image" name="uploadImage" accept="image/*">
+                            <input type="file" id="upload_image" name="upload_image" accept="image/*">
                         </div>
                         <div id="uploadedImage"></div>
                     </div>
@@ -75,7 +75,7 @@
                 <div class="card">
                     <div class="card-header"><strong>Logo Sekolah</strong></div>
                     <div class="card-body card-block">
-                        <input type="file" name="upload_image" id="upload_image" />
+                        <input type="file" name="upload_image1" id="upload_image1" />
                         <br/>
                         <div id="uploaded_image"></div>
                     </div>
@@ -114,7 +114,7 @@
 
 <script>
         $(document).ready(function() {
-          $image_crop = $('#image_demo').croppie({
+            $image_crop = $('#image_demo').croppie({
               enableExif: true,
               viewport: {
                   width: 250,
@@ -122,8 +122,8 @@
                   type: 'circle'
               },
             boundary: {
-                width: 350.
-                height: 350,
+                width: 350,
+                height: 350
             }
           });
 

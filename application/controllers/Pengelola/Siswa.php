@@ -18,4 +18,33 @@ class Siswa extends CI_Controller {
 		$this->mMaster->CekAkses($this->session->userdata('akses'));
 		$this->mMaster->LoadPage($this->session->userdata('akses'), 'siswa', $data);
 	}
+
+	public function add() {
+		$nisn = $this->input->post('nisn');
+		$data = array(
+			'nisn' => $nisn,
+			'namaSiswa' => $this->input->post('namaSiswa'),
+			'jenisKelamin' => $this->input->post('jenisKelamin'),
+			'alamatSiswa' => $this->input->post('alamatSiswa'),
+			'idKelas' => $this->input->post('idKelas'),
+			'idOrangtua' => $this->input->post('idOrangtua')
+		);
+		$table = 'ms_siswa';
+		$where = array('nisn' => $nisn);
+
+		$query = $this->db->get_where($table, $where);
+		if($query->num_rows() > 0) {
+			$this->mMaster->UpdateData($table, $data, $where);
+		} else {
+			$this->mMaster->TambahData($table, $data);
+		}
+	}
+
+	public function delete() {
+		$nisn = $this->input->post('nisn2');
+		$table = 'ms_siswa';
+		$where = array('nisn' => $nisn);
+
+		$this->mMaster->DeleteData($table, $where);
+	}
 }

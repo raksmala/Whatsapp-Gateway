@@ -46,13 +46,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Rendy Kharisma Aksmala</td>
-                                    <td>Laki-laki</td>
-                                    <td>Jalan Mangga, Kota Madiun</td>
-                                    <td>082245874096</td>
-                                </tr>
+                            <?php 
+                            $no = 1;
+                            foreach($query->result() as $row){ 
+                            echo "<tr>
+                                    <td>" .$no. "</td>
+                                    <td>" .$row->namaPegawai. "</td>
+                                    <td>" .$row->jenisKelamin. "</td>
+                                    <td>" .$row->alamatPegawai. "</td>
+                                    <td>" .$row->noHp. "</td>
+                                </tr>";
+                            $no++;
+                            } 
+                            ?>
                             </tbody>
                         </table>
                     </div>

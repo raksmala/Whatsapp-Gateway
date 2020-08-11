@@ -45,11 +45,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Akhmad Subkhan</td>
-                                    <td>082245874096</td>
-                                </tr>
+                            <?php
+                            $no = 1;
+                            foreach($query->result() as $row){ 
+                            echo "<tr>
+                                    <td>" .$no. "</td>
+                                    <td>" .$row->namaOrangtua. "</td>
+                                    <td>" .$row->jenisKelamin. "</td>
+                                    <td>" .$row->noHp. "</td>
+                                </tr>";
+                            $no++;
+                            } 
+                            ?>
                             </tbody>
                         </table>
                     </div>

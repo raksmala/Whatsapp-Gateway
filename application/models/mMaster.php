@@ -25,12 +25,37 @@
 	function TampilData($select, $from, $join, $where) {
         $this->db->select($select);
 		$this->db->from($from);
-		foreach($join as $table=>$on) {
-			$this->db->join($table, $on);
+		if($join!=null) {
+			foreach($join as $table=>$on) {
+				if($from = 'ms_user') {
+					$this->db->join($table, $on, 'left');
+				} else {
+					$this->db->join($table, $on);
+				}
+			}
 		}
-		foreach($where as $condition1=>$condition2) {
-			$this->db->where("" .$condition1. " " .$condition2. "");
+		if($where!=null) {
+			foreach($where as $condition1=>$condition2) {
+				$this->db->where("" .$condition1. " " .$condition2. "");
+			}
 		}
         return $this->db->get();
-    }
+	}
+	
+	function TambahData($table, $data) {
+		$this->db->insert($table, $data);
+		redirect($this->uri->segment(1)."/".$this->uri->segment(2));
+	}
+
+	function UpdateData($table, $data, $where) {
+		$this->db->where($where);
+		$this->db->update($table, $data);
+		redirect($this->uri->segment(1)."/".$this->uri->segment(2));
+	}
+
+	function DeleteData($table, $where) {
+		$this->db->where($where);
+		$this->db->delete($table);
+		redirect($this->uri->segment(1)."/".$this->uri->segment(2));
+	}
 }

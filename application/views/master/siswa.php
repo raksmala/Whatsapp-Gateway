@@ -59,6 +59,9 @@
                                     <td>" .$row->namaKelas. "</td>
                                     <td>" .$row->namaSekolah. "</td>
                                     <td>" .$row->namaOrangtua. "</td>
+                                    <td><a href='#' class='on-default edit-row btn btn-primary' data-toggle='modal' data-target='#addModal' onclick=\"Set('".$row->nisn."', '".$row->namaSiswa."', '".$row->jenisKelamin."', '".$row->alamatSiswa."', '".$row->idKelas."', '".$row->idOrangtua."')\"><i class='fa fa-pencil'></i></a>
+                                        <a href='#' class='on-default delete-row btn btn-danger' data-toggle='modal' data-target='#deleteModal' onclick=\"Delete('".$row->nisn."', '".$row->namaSiswa."', '".$row->jenisKelamin."', '".$row->alamatSiswa."', '".$row->idKelas."', '".$row->idOrangtua."')\"><i class='fa fa-trash'></i></a>
+                                    </td>
                                 </tr>";
                             } 
                             ?>
@@ -81,7 +84,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="#" method="post" class="form-horizontal" role="form">
+                <form action="<?php echo base_url('Pengelola/Siswa/add'); ?>" method="post" class="form-horizontal" role="form">
                     <div class="modal-body">
                         <div class="row form-group">
                             <label class="col-md-3 form-control-label" style="text-align: right;">NISN</label>
@@ -111,32 +114,28 @@
                         <div class="row form-group">
                             <label class="col-md-3 form-control-label" style="text-align: right;">Kelas</label>
                             <div class="col-md-3">
-                                <select data-placeholder="Pilih Kelas" class="standardSelect" tabindex="1">
+                                <select id="idKelas" name="idKelas" data-placeholder="Pilih Kelas" class="standardSelect" tabindex="1">
                                     <option value="" label="default"></option>
-                                    <option value="10 IPA 1">10 IPA 1</option>
-                                    <option value="10 IPA 2">10 IPA 2</option>
-                                    <option value="10 IPA 3">10 IPA 3</option>
-                                    <option value="10 IPS 1">10 IPS 1</option>
-                                    <option value="11 IPA 1">11 IPA 1</option>
-                                    <option value="11 IPA 2">11 IPA 2</option>
-                                    <option value="11 IPA 3">11 IPA 3</option>
-                                    <option value="11 IPS 1">11 IPS 1</option>
-                                    <option value="12 IPA 1">12 IPA 1</option>
-                                    <option value="12 IPA 2">12 IPA 2</option>
-                                    <option value="12 IPA 3">12 IPA 3</option>
-                                    <option value="12 IPS 1">12 IPS 1</option>
+                                    <?php
+                                        $kelas = $this->mMaster->TampilData("*", "ms_kelas", null, null);
+                                        foreach($kelas->result() as $row) {
+                                            echo "<option value='".$row->idKelas."'>".$row->namaKelas."</option>";
+                                        }
+                                    ?>
                                 </select>
                             </div>
                         </div>
                         <div class="row form-group">
                             <label class="col-md-3 form-control-label" style="text-align: right;">Nama Orang Tua</label>
                             <div class="col-md-3">
-                                <select data-placeholder="Nama Orang Tua" class="standardSelect" tabindex="1">
+                                <select id="idOrangtua" name="idOrangtua" data-placeholder="Nama Orang Tua" class="standardSelect" tabindex="1">
                                     <option value="" label="default"></option>
-                                    <option value="Joko">Joko</option>
-                                    <option value="Joni">Joni</option>
-                                    <option value="Subari">Subari</option>
-                                    <option value="Parto">Parto</option>
+                                    <?php
+                                        $orangtua = $this->mMaster->TampilData("*", "ms_orangtua", null, null);
+                                        foreach($orangtua->result() as $row) {
+                                            echo "<option value='".$row->idOrangtua."'>".$row->namaOrangtua."</option>";
+                                        }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -156,31 +155,66 @@
         </div>
     </div>
 
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mediumModalLabel">Data Siswa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?php echo base_url('Pengelola/Siswa/delete'); ?>" method="post" class="form-horizontal" role="form">
+                    <div class="modal-body">
+                        <div class="row form-group">
+                            <div class="col-md-8">
+                                <p>Apakah anda yakin ingin menghapus ?<p>
+                                <input type="hidden" class="form-control" id="nisn2" name="nisn2" required>
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div><!-- .content -->
 <div class="clearfix"></div>
 
 <script type="text/javascript">
-    function Set(idAnggota, namaAnggota, NIMAnggota, jabatanAnggota, programStudiAnggota) {
-        document.getElementById('idAnggota').value = idAnggota;
-        document.getElementById('namaAnggota').value = namaAnggota;
-        document.getElementById('NIMAnggota').value = NIMAnggota;
-        document.getElementById('jabatanAnggota').value = jabatanAnggota;
-        document.getElementById('programStudiAnggota').value = programStudiAnggota;
+    function Set(nisn, namaSiswa, jenisKelamin, alamatSiswa, idKelas, idOrangtua) {
+        document.getElementById('nisn').readOnly = true;
+        document.getElementById('nisn').value = nisn;
+        document.getElementById('namaSiswa').value = namaSiswa;
+        if(jenisKelamin == 'Laki-laki') {
+            document.getElementById('jkLaki').checked = true;
+        } else if(jenisKelamin == 'Perempuan') {
+            document.getElementById('jkPerempuan').checked = true;
+        }
+        document.getElementById('alamatSiswa').value = alamatSiswa;
+        document.getElementById('idKelas').value = idKelas;
+        document.getElementById('idOrangtua').value = idOrangtua;
     }
 
-    function Delete(idAnggota, namaAnggota, NIMAnggota, jabatanAnggota, programStudiAnggota) {
-        document.getElementById('idAnggota2').value = idAnggota;
-        document.getElementById('namaAnggota2').value = namaAnggota;
-        document.getElementById('NIMAnggota2').value = NIMAnggota;
-        document.getElementById('jabatanAnggota2').value = jabatanAnggota;
-        document.getElementById('programStudiAnggota2').value = programStudiAnggota;
+    function Delete(nisn, namaSiswa, jenisKelamin, alamatSiswa, idKelas, idOrangtua) {
+        document.getElementById('nisn2').value = nisn;
+        document.getElementById('namaSiswa2').value = namaSiswa;
+        document.getElementById('jenisKelamin2').value = jenisKelamin;
+        document.getElementById('alamatSiswa2').value = alamatSiswa;
+        document.getElementById('idKelas2').value = idKelas;
+        document.getElementById('idOrangtua2').value = idOrangtua;
     }
 
-    function Reset(idAnggota, namaAnggota, NIMAnggota, jabatanAnggota, programStudiAnggota) {
-        document.getElementById('idAnggota').value = "";
-        document.getElementById('namaAnggota').value = "";
-        document.getElementById('NIMAnggota').value = "";
-        document.getElementById('jabatanAnggota').value = "";
-        document.getElementById('programStudiAnggota').value = "";
+    function Reset(nisn, namaSiswa, jenisKelamin, alamatSiswa, idKelas, idOrangtua) {
+        document.getElementById('nisn').value = "";
+        document.getElementById('namaSiswa').value = "";
+        document.getElementById('jenisKelamin').value = "";
+        document.getElementById('alamatSiswa').value = "";
+        document.getElementById('idKelas').value = "";
+        document.getElementById('idOrangtua').value = "";
     }
 </script>

@@ -48,15 +48,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>20534125</td>
-                                    <td>SMA Negeri 1 Kota Madiun</td>
-                                    <td>Jalan Mastrip No.19 Kota Madiun</td>
-                                    <td>0351454393</td>
-                                    <td>smasa_madiun@yahoo.com</td>
-                                    <td>Rendy Kharisma Aksmala</td>
-                                    <td>082245874096</td>
-                                </tr>
+                            <?php 
+                            foreach($query->result() as $row){ 
+                            echo "<tr>
+                                    <td>" .$row->npsn. "</td>
+                                    <td>" .$row->namaSekolah. "</td>
+                                    <td>" .$row->alamatSekolah. "</td>
+                                    <td>" .$row->noTlp. "</td>
+                                    <td>" .$row->email. "</td>
+                                    <td>" .$row->kepalaSekolah. "</td>
+                                    <td>" .$row->noHp. "</td>
+                                </tr>";
+                            } 
+                            ?>
                             </tbody>
                         </table>
                     </div>

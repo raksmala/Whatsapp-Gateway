@@ -39,18 +39,46 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Nama Pegawai / Sekolah</th>
                                     <th>Username</th>
                                     <th>Level</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>raksmala</td>
-                                    <td>Super Admin</td>
-                                    <td>Aktif</td>
-                                </tr>
+                            <?php 
+                            $no = 1;
+                            foreach($query->result() as $row){ 
+                            echo "<tr>
+                                    <td>" .$no. "</td>
+                                    <td>";
+                                        if($row->npsn != null) {
+                                            echo $row->namaSekolah;
+                                        } else if ($row->idPegawai != null) {
+                                            echo $row->namaPegawai;
+                                        }
+                                    echo "</td>
+                                    <td>" .$row->username. "</td>
+                                    <td>";
+                                        if($row->level == 'superadmin') {
+                                            echo 'Super Admin';
+                                        } else if($row->level == 'admin') {
+                                            echo 'Admin';
+                                        } else if($row->level == 'pengelola') {
+                                            echo 'Pengelola';
+                                        }
+                                    echo "</td>
+                                    <td>";
+                                        if($row->statusUser == 'aktif') {
+                                            echo 'Aktif';
+                                        } else if($row->statusUser == 'tidakaktif') {
+                                            echo 'Tidak Aktif';
+                                        }
+                                    echo "</td>
+                                </tr>";
+                            $no++;
+                            } 
+                            ?>
                             </tbody>
                         </table>
                     </div>

@@ -45,11 +45,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>12 Ipa 6</td>
-                                    <td>SMA Negeri 1 Madiun</td>
-                                </tr>
+                            <?php 
+                            $no = 1;
+                            foreach($query->result() as $row){ 
+                            echo "<tr>
+                                    <td>" .$no. "</td>
+                                    <td>" .$row->namaKelas. "</td>
+                                    <td>" .$row->namaSekolah. "</td>
+                                </tr>";
+                            $no++;
+                            } 
+                            ?>
                             </tbody>
                         </table>
                     </div>

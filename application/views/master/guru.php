@@ -47,13 +47,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>20000621 201807 1 005</td>
-                                    <td>Rendy Kharisma Aksmala</td>
-                                    <td>Laki-laki</td>
-                                    <td>Jalan Mangga, Kota Madiun</td>
-                                    <td>SMA Negeri 1 Kota Madiun</td>
-                                </tr>
+                            <?php 
+                            foreach($query->result() as $row){ 
+                            echo "<tr>
+                                    <td>" .substr($row->nip, 0, 8). " " .substr($row->nip, 8, 6). " " .substr($row->nip, 14, 1). " " .substr($row->nip, 15, 3). "</td>
+                                    <td>" .$row->namaGuru. "</td>
+                                    <td>" .$row->jenisKelamin. "</td>
+                                    <td>" .$row->alamatGuru. "</td>
+                                    <td>" .$row->namaSekolah. "</td>
+                                </tr>";
+                            } 
+                            ?>
                             </tbody>
                         </table>
                     </div>
