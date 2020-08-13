@@ -5,13 +5,13 @@ class Siswa extends CI_Controller {
 	public function index() {
 		$join = array(
 			"ms_kelas" => "ms_siswa.idKelas = ms_kelas.idKelas",
-			"ms_sekolah" => "ms_kelas.npsn = ms_sekolah.npsn",
-			"ms_orangtua" => "ms_siswa.idOrangtua = ms_orangtua.idOrangtua"
+			"ms_sekolah" => "ms_kelas.npsn = ms_sekolah.npsn"
 		);
 
 		$npsn = $this->session->userdata('npsn');
 		$where = array(
-			"ms_sekolah.npsn" => "= " .$npsn. ""
+			"ms_sekolah.npsn" => "= " .$npsn. "",
+			"status" => "= 'aktif'"
 		);
 
 		$data['query'] = $this->mMaster->TampilData("*", "ms_siswa", $join, $where);
@@ -27,7 +27,9 @@ class Siswa extends CI_Controller {
 			'jenisKelamin' => $this->input->post('jenisKelamin'),
 			'alamatSiswa' => $this->input->post('alamatSiswa'),
 			'idKelas' => $this->input->post('idKelas'),
-			'idOrangtua' => $this->input->post('idOrangtua')
+			'namaOrangtua' => $this->input->post('namaOrangtua'),
+			'noHp' => $this->input->post('noHp'),
+			'status' => $this->input->post('status')
 		);
 		$table = 'ms_siswa';
 		$where = array('nisn' => $nisn);

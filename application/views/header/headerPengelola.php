@@ -33,7 +33,8 @@
     <link href="<?php echo base_url(); ?>assets/weather-icons-master/css/weather-icons.min.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>assets/fullcalendar.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/croppie.min.css">
+    <link rel="Stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/Croppie-master/croppie.css" />
+    <link rel="Stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/Croppie-master/demo/demo.css" />
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -74,7 +75,6 @@
 
     </style>
     <script src="<?php echo base_url(); ?>assets/jquery-3.5.1.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/croppie.min.js"></script>
 </head>
 
 <body>
@@ -93,8 +93,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-briefcase"></i>Master Data</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><a href="<?php echo base_url('Pengelola/Siswa');?>">Siswa</a></li>
+                            <li><a href="<?php echo base_url('Pengelola/Alumni');?>">Alumni</a></li>
                             <li><a href="<?php echo base_url('Pengelola/Guru');?>">Guru</a></li>
-                            <li><a href="<?php echo base_url('Pengelola/Orangtua');?>">Orang Tua</a></li>
                             <li><a href="<?php echo base_url('Pengelola/Kelas');?>">Kelas</a></li>
                         </ul>
                     </li>

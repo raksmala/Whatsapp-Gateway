@@ -17,7 +17,7 @@
 
     <!-- Scripts -->
     <script src="<?php echo base_url(); ?>assets/popper.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/bootstrap-4.1.3/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/bootstrap-4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/jquery.matchHeight-min.js"></script>
     <script src="<?php echo base_url(); ?>assets/ElaAdmin-master/assets/js/main.js"></script>
 

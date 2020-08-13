@@ -4,7 +4,7 @@ class mLogin extends CI_Model{
         $username=htmlspecialchars($this->input->post('username',TRUE),ENT_QUOTES);
 		$password=htmlspecialchars($this->input->post('password',TRUE),ENT_QUOTES);
 		
-		$query=$this->db->query("SELECT * FROM ms_user WHERE username='".$username."' AND password='".MD5($password)."'");
+		$query=$this->db->query("SELECT * FROM ms_user WHERE username='".$username."' AND password='".MD5($password)."' AND statusUser='aktif'");
 		foreach ($query->result() as $row) {
             $this->db->from('ms_user');
             if($row->npsn != null) {

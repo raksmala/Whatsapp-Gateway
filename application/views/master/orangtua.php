@@ -30,11 +30,9 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">Data Orang Tua</strong>
+                        <a href="#" class="on-default edit-row btn btn-success btn-sm mr-3" data-toggle="modal" data-target="#addModal" onclick="Reset()" style="float: right;"><i class="fa fa-plus"></i>&nbsp; <b>Tambah Data</b></a>
                     </div>
                     <div class="card-body">
-                        <div style="width: 100%; text-align: right; margin-bottom: 10px;">
-                            <a href="#" class="on-default edit-row btn btn-success mr-3" data-toggle="modal" data-target="#addModal" onclick="Reset()"><i class="fa fa-plus"></i></a>
-                        </div>
 
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
                             <thead>
@@ -51,7 +49,6 @@
                             echo "<tr>
                                     <td>" .$no. "</td>
                                     <td>" .$row->namaOrangtua. "</td>
-                                    <td>" .$row->jenisKelamin. "</td>
                                     <td>" .$row->noHp. "</td>
                                 </tr>";
                             $no++;

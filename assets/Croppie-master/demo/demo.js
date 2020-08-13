@@ -67,46 +67,6 @@ var Demo = (function() {
 		});
 	}
 
-	function demoBasic() {
-		var $w = $('.basic-width'),
-			$h = $('.basic-height'),
-			basic = $('#demo-basic').croppie({
-			viewport: {
-				width: 150,
-				height: 200
-			},
-			boundary: {
-				width: 300,
-				height: 300
-			}
-		});
-		basic.croppie('bind', {
-			url: 'demo/cat.jpg',
-			points: [77,469,280,739]
-		});
-
-		$('.basic-result').on('click', function() {
-			var w = parseInt($w.val(), 10),
-				h = parseInt($h.val(), 10),s
-				size = 'viewport';
-			if (w || h) {
-				size = { width: w, height: h };
-			}
-			basic.croppie('result', {
-				type: 'canvas',
-				size: size,
-				resultSize: {
-					width: 50,
-					height: 50
-				}
-			}).then(function (resp) {
-				popupResult({
-					src: resp
-				});
-			});
-		});
-	}
-
 	function demoVanilla() {
 		var vEl = document.getElementById('vanilla-demo'),
 			vanilla = new Croppie(vEl, {
@@ -209,6 +169,7 @@ var Demo = (function() {
 					src: resp
 				});
 			});
+            reader.readAsDataURL(this.files[0]);
 		});
 	}
 
@@ -246,13 +207,7 @@ var Demo = (function() {
 	}
 
 	function init() {
-		bindNavigation();
-		demoMain();
-		demoBasic();	
-		demoVanilla();	
-		demoResizer();
 		demoUpload();
-		demoHidden();
 	}
 
 	return {

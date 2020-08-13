@@ -30,11 +30,9 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">Data Siswa</strong>
+                        <a href="#" class="on-default edit-row btn btn-success btn-sm mr-3" data-toggle="modal" data-target="#addModal" onclick="Reset()" style="float: right;"><i class="fa fa-plus"></i>&nbsp; <b>Tambah Data</b></a>
                     </div>
                     <div class="card-body">
-                        <div style="width: 100%; text-align: right; margin-bottom: 10px;">
-                            <a href="#" class="on-default edit-row btn btn-success mr-3" data-toggle="modal" data-target="#addModal" onclick="Reset()"><i class="fa fa-plus"></i></a>
-                        </div>
                         
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
                             <thead>
@@ -43,9 +41,9 @@
                                     <th>Nama Siswa</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Alamat</th>
-                                    <th>Kelas</th>
-                                    <th>Sekolah</th>
                                     <th>Nama Orang Tua</th>
+                                    <th>No HP</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,11 +54,10 @@
                                     <td>" .$row->namaSiswa. "</td>
                                     <td>" .$row->jenisKelamin. "</td>
                                     <td>" .$row->alamatSiswa. "</td>
-                                    <td>" .$row->namaKelas. "</td>
-                                    <td>" .$row->namaSekolah. "</td>
                                     <td>" .$row->namaOrangtua. "</td>
-                                    <td><a href='#' class='on-default edit-row btn btn-primary' data-toggle='modal' data-target='#addModal' onclick=\"Set('".$row->nisn."', '".$row->namaSiswa."', '".$row->jenisKelamin."', '".$row->alamatSiswa."', '".$row->idKelas."', '".$row->idOrangtua."')\"><i class='fa fa-pencil'></i></a>
-                                        <a href='#' class='on-default delete-row btn btn-danger' data-toggle='modal' data-target='#deleteModal' onclick=\"Delete('".$row->nisn."', '".$row->namaSiswa."', '".$row->jenisKelamin."', '".$row->alamatSiswa."', '".$row->idKelas."', '".$row->idOrangtua."')\"><i class='fa fa-trash'></i></a>
+                                    <td>" .$row->noHp. "</td>
+                                    <td><a href='#' class='on-default edit-row btn btn-primary' data-toggle='modal' data-target='#addModal' onclick=\"Set('".$row->nisn."', '".$row->namaSiswa."', '".$row->jenisKelamin."', '".$row->alamatSiswa."', '".$row->namaOrangtua."', '".$row->noHp."', '".$row->idKelas."', '".$row->status."')\"><i class='fa fa-pencil'></i></a>
+                                        <a href='#' class='on-default delete-row btn btn-danger' data-toggle='modal' data-target='#deleteModal' onclick=\"Delete('".$row->nisn."', '".$row->namaSiswa."', '".$row->jenisKelamin."', '".$row->alamatSiswa."', '".$row->namaOrangtua."', '".$row->noHp."', '".$row->idKelas."', '".$row->status."')\"><i class='fa fa-trash'></i></a>
                                     </td>
                                 </tr>";
                             } 
@@ -112,13 +109,31 @@
                             </div>
                         </div>
                         <div class="row form-group">
+                            <label class="col-md-3 form-control-label" style="text-align: right;">Alamat</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="alamatSiswa" name="alamatSiswa" required>
+                            </div>
+                        </div>                                  
+                        <div class="row form-group">
+                            <label class="col-md-3 form-control-label" style="text-align: right;">Nama Orang Tua</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="namaOrangtua" name="namaOrangtua" required>
+                            </div>
+                        </div>                                  
+                        <div class="row form-group">
+                            <label class="col-md-3 form-control-label" style="text-align: right;">No HP</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="noHp" name="noHp" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
                             <label class="col-md-3 form-control-label" style="text-align: right;">Kelas</label>
                             <div class="col-md-3">
-                                <select id="idKelas" name="idKelas" data-placeholder="Pilih Kelas" class="standardSelect" tabindex="1">
-                                    <option value="" label="default"></option>
+                                <select id="idKelas" name="idKelas" data-placeholder="Kelas" tabindex="1">
+                                    <option value="">---Kelas---</option>
                                     <?php
-                                        $kelas = $this->mMaster->TampilData("*", "ms_kelas", null, null);
-                                        foreach($kelas->result() as $row) {
+                                        $orangtua = $this->mMaster->TampilData("*", "ms_kelas", null, null);
+                                        foreach($orangtua->result() as $row) {
                                             echo "<option value='".$row->idKelas."'>".$row->namaKelas."</option>";
                                         }
                                     ?>
@@ -126,23 +141,16 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <label class="col-md-3 form-control-label" style="text-align: right;">Nama Orang Tua</label>
-                            <div class="col-md-3">
-                                <select id="idOrangtua" name="idOrangtua" data-placeholder="Nama Orang Tua" class="standardSelect" tabindex="1">
-                                    <option value="" label="default"></option>
-                                    <?php
-                                        $orangtua = $this->mMaster->TampilData("*", "ms_orangtua", null, null);
-                                        foreach($orangtua->result() as $row) {
-                                            echo "<option value='".$row->idOrangtua."'>".$row->namaOrangtua."</option>";
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <label class="col-md-3 form-control-label" style="text-align: right;">Alamat</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="alamatSiswa" name="alamatSiswa" required>
+                            <label class="col-md-3 form-control-label" style="text-align: right;">Status</label>
+                            <div class="col col-md-8">
+                                <div class="form-check-inline form-check">
+                                    <label for="inline-radio1" class="form-check-label mr-2">
+                                        <input type="radio" id="status1" name="status" value="aktif" class="form-check-input">Aktif
+                                    </label>
+                                    <label for="inline-radio2" class="form-check-label mr-2">
+                                        <input type="radio" id="status2" name="status" value="tidakaktif" class="form-check-input">Tidak Aktif
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -175,7 +183,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Hapus</button>
                     </div>
                 </form>
             </div>
@@ -186,7 +194,7 @@
 <div class="clearfix"></div>
 
 <script type="text/javascript">
-    function Set(nisn, namaSiswa, jenisKelamin, alamatSiswa, idKelas, idOrangtua) {
+    function Set(nisn, namaSiswa, jenisKelamin, alamatSiswa, namaOrangtua, noHp, idKelas, status) {
         document.getElementById('nisn').readOnly = true;
         document.getElementById('nisn').value = nisn;
         document.getElementById('namaSiswa').value = namaSiswa;
@@ -196,25 +204,37 @@
             document.getElementById('jkPerempuan').checked = true;
         }
         document.getElementById('alamatSiswa').value = alamatSiswa;
+        document.getElementById('namaOrangtua').value = namaOrangtua;
+        document.getElementById('noHp').value = noHp;
         document.getElementById('idKelas').value = idKelas;
-        document.getElementById('idOrangtua').value = idOrangtua;
+        if(status == 'aktif') {
+            document.getElementById('status1').checked = true;
+        } else if(status == 'tidakaktif') {
+            document.getElementById('status2').checked = true;
+        }
     }
 
-    function Delete(nisn, namaSiswa, jenisKelamin, alamatSiswa, idKelas, idOrangtua) {
+    function Delete(nisn, namaSiswa, jenisKelamin, alamatSiswa, namaOrangtua, noHp, idKelas, status) {
         document.getElementById('nisn2').value = nisn;
         document.getElementById('namaSiswa2').value = namaSiswa;
         document.getElementById('jenisKelamin2').value = jenisKelamin;
         document.getElementById('alamatSiswa2').value = alamatSiswa;
+        document.getElementById('namaOrangtua2').value = namaOrangtua;
+        document.getElementById('noHp2').value = noHp;
         document.getElementById('idKelas2').value = idKelas;
-        document.getElementById('idOrangtua2').value = idOrangtua;
+        document.getElementById('status2').value = status;
     }
 
-    function Reset(nisn, namaSiswa, jenisKelamin, alamatSiswa, idKelas, idOrangtua) {
+    function Reset() {
+        document.getElementById('nisn').readOnly = false;
         document.getElementById('nisn').value = "";
         document.getElementById('namaSiswa').value = "";
-        document.getElementById('jenisKelamin').value = "";
         document.getElementById('alamatSiswa').value = "";
+        document.getElementById('jkLaki').checked = false;
+        document.getElementById('jkPerempuan').checked = false;
+        document.getElementById('namaOrangtua').value = "";
+        document.getElementById('noHp').value = "";
         document.getElementById('idKelas').value = "";
-        document.getElementById('idOrangtua').value = "";
+        document.getElementById('status').value = "";
     }
 </script>
