@@ -12,9 +12,10 @@ class User extends CI_Controller {
 			"level" => "!= 'superadmin'"
 		);
 
-		$data['query'] = $this->mMaster->TampilData("*", "ms_user", $join, $where);
-		$this->mMaster->CekAkses($this->session->userdata('akses'));
-        $this->mMaster->LoadPage($this->session->userdata('akses'), 'user', $data);
+		$data['menu'] = $this->mMenu->LoadMenu();
+		$data['submenu'] = $this->mMenu->LoadSubMenu();
+		$data['query'] = $this->mMaster->TampilData("*", "ms_user", $join, "left", $where);
+        $this->mMaster->LoadPage('user', $data);
 	}
 
 	public function add() {

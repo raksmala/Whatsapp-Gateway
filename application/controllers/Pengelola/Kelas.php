@@ -12,9 +12,10 @@ class Kelas extends CI_Controller {
 			"ms_sekolah.npsn" => "= " .$npsn. ""
 		);
 
-		$data['query'] = $this->mMaster->TampilData("*", "ms_kelas", $join, $where);
-		$this->mMaster->CekAkses($this->session->userdata('akses'));
-		$this->mMaster->LoadPage($this->session->userdata('akses'), 'kelas', $data);
+		$data['menu'] = $this->mMenu->LoadMenu();
+		$data['submenu'] = $this->mMenu->LoadSubMenu();
+		$data['query'] = $this->mMaster->TampilData("*", "ms_kelas", $join, null, $where);
+		$this->mMaster->LoadPage('kelas', $data);
 	}
 	
 	public function add() {

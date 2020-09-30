@@ -14,9 +14,10 @@ class Siswa extends CI_Controller {
 			"status" => "= 'aktif'"
 		);
 
-		$data['query'] = $this->mMaster->TampilData("*", "ms_siswa", $join, $where);
-		$this->mMaster->CekAkses($this->session->userdata('akses'));
-		$this->mMaster->LoadPage($this->session->userdata('akses'), 'siswa', $data);
+		$data['menu'] = $this->mMenu->LoadMenu();
+		$data['submenu'] = $this->mMenu->LoadSubMenu();
+		$data['query'] = $this->mMaster->TampilData("*", "ms_siswa", $join, null, $where);
+		$this->mMaster->LoadPage('siswa', $data);
 	}
 
 	public function add() {
@@ -48,5 +49,53 @@ class Siswa extends CI_Controller {
 		$where = array('nisn' => $nisn);
 
 		$this->mMaster->DeleteData($table, $where);
+	}
+
+	public function excel() {
+		force_download('assets/Excel/format_siswa.xlsx',NULL);
+	}
+
+	public function import() {
+		if(isset($_FILES["file"]["name"])) {
+			$path = $_FILES["file"]["tmp_name"];
+			$object = PHPExcel_IOFactory::load($path);
+			foreach($object->getWorksheetIterator() as $worksheet)
+			{
+				$highestRow = $worksheet->getHighestRow();
+				$highestColumn = $worksheet->getHighestColumn();
+
+				for($row=2; $row<=$highestRow; $row++) {
+					$nisn = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+					$namaSiswa = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+					$jenisKelamin = strtoupper($worksheet->getCellByColumnAndRow(2, $row)->getValue());
+					if($jenisKelamin=='L') {
+						$jenisKelamin = 'Laki-laki';
+					} else if($jenisKelamin=='P') {
+						$jenisKelamin = 'Perempuan';
+					}
+					$alamatSiswa = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+					$namaOrangtua = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+					$noHp = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+					$noHp = '+62'.substr(trim($noHp), 1);
+					$where = array(
+						"npsn" => "= " .$this->session->userdata('npsn'). "",
+						"namaKelas" => "= 'Default'"
+					);
+					$idKelas = $this->mMaster->TampilData('idKelas', 'ms_kelas', null, null, $where);
+					foreach($idKelas->result() as $id)
+					$data[] = array(
+					'nisn'  => $nisn,
+					'idKelas'   => $id->idKelas,
+					'namaSiswa'   => $namaSiswa,
+					'jenisKelamin'    => $jenisKelamin,
+					'alamatSiswa'  => $alamatSiswa,
+					'namaOrangtua'   => $namaOrangtua,
+					'noHp'  => $noHp,
+					'status'  => 'aktif'
+					);
+				}
+			}
+			$this->mMaster->TambahDataBatch('ms_siswa', $data);
+		} 
 	}
 }

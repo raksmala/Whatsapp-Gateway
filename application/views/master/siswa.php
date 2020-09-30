@@ -1,3 +1,9 @@
+<script>
+  $(document).ready(function(){
+    // Sembunyikan alert validasi kosong
+    $("#kosong").hide();
+  });
+</script>
 <div class="breadcrumbs">
     <div class="breadcrumbs-inner">
         <div class="row m-0">
@@ -31,6 +37,7 @@
                     <div class="card-header">
                         <strong class="card-title">Data Siswa</strong>
                         <a href="#" class="on-default edit-row btn btn-success btn-sm mr-3" data-toggle="modal" data-target="#addModal" onclick="Reset()" style="float: right;"><i class="fa fa-plus"></i>&nbsp; <b>Tambah Data</b></a>
+                        <a href="#" class="on-default edit-row btn btn-success btn-sm mr-3" data-toggle="modal" data-target="#importModal" style="float: right;"><b>Import Excel</b></a>
                     </div>
                     <div class="card-body">
                         
@@ -132,7 +139,7 @@
                                 <select id="idKelas" name="idKelas" data-placeholder="Kelas" tabindex="1">
                                     <option value="">---Kelas---</option>
                                     <?php
-                                        $orangtua = $this->mMaster->TampilData("*", "ms_kelas", null, null);
+                                        $orangtua = $this->mMaster->TampilData("*", "ms_kelas", null, null, null);
                                         foreach($orangtua->result() as $row) {
                                             echo "<option value='".$row->idKelas."'>".$row->namaKelas."</option>";
                                         }
@@ -190,6 +197,33 @@
         </div>
     </div>
 
+    <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mediumModalLabel">Data Siswa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" id="importExcel" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="col-md-8">
+                            <a href="<?php echo base_url('Pengelola/Siswa/excel'); ?>">Unduh Format Excel</a>
+                        </div>
+                        <div class="col-md-8 mt-2">
+                            <input type="file" id="file" name="file" required accept=".xls, .xlsx">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div><!-- .content -->
 <div class="clearfix"></div>
 
@@ -237,4 +271,29 @@
         document.getElementById('idKelas').value = "";
         document.getElementById('status').value = "";
     }
+</script>
+
+<script>
+    $(document).ready(function(){
+
+        $('#importExcel').on('submit', function(event){
+        $('#importExcel').modal('hide');
+		event.preventDefault();
+		$.ajax({
+            url:"<?php echo base_url(); ?>Pengelola/Siswa/import",
+			method:"POST",
+			data:new FormData(this),
+			contentType:false,
+			cache:false,
+			processData:false,
+			success:function(data){
+				$('#file').val('');
+                setTimeout(function(){
+                    location.reload();
+                }, 500);
+			}
+		})
+        .fail(function (jqXHR, textStatus, errorThrown) { alert("Gagal"); });
+	    });
+    });
 </script>

@@ -3,9 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Sekolah extends CI_Controller {
 	public function index() {
-		$data['query'] = $this->mMaster->TampilData("*", "ms_sekolah", null, null);
-		$this->mMaster->CekAkses($this->session->userdata('akses'));
-		$this->mMaster->LoadPage($this->session->userdata('akses'), 'sekolah', $data);
+		$data['menu'] = $this->mMenu->LoadMenu();
+		$data['submenu'] = $this->mMenu->LoadSubMenu();
+		$data['query'] = $this->mMaster->TampilData("*", "ms_sekolah", null, null, null);
+		$this->mMaster->LoadPage('sekolah', $data);
 	}
 
 	public function add() {
@@ -19,7 +20,12 @@ class Sekolah extends CI_Controller {
 			'kepalaSekolah' => $this->input->post('kepalaSekolah'),
 			'noHpKepsek' => $this->input->post('noHpKepsek')
 		);
+		$data2 = array(
+			'npsn' => $npsn,
+			'namaKelas' => 'Default'
+		);
 		$table = 'ms_sekolah';
+		$table2 = 'ms_kelas';
 		$where = array('npsn' => $npsn);
 
 		$query = $this->db->get_where($table, $where);
@@ -27,6 +33,7 @@ class Sekolah extends CI_Controller {
 			$this->mMaster->UpdateData($table, $data, $where);
 		} else {
 			$this->mMaster->TambahData($table, $data);
+			$this->mMaster->TambahData($table2, $data2);
 		}
 	}
 

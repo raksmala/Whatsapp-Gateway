@@ -129,7 +129,7 @@
                                 <select id="idPegawai" name="idPegawai" data-placeholder="Pegawai" tabindex="1">
                                     <option value="">---Pegawai---</option>
                                     <?php
-                                        $pegawai = $this->mMaster->TampilData("*", "ms_pegawai", null, null);
+                                        $pegawai = $this->mMaster->TampilData("*", "ms_pegawai", null, null, null);
                                         foreach($pegawai->result() as $row) {
                                             echo "<option value='".$row->idPegawai."'>".$row->namaPegawai."</option>";
                                         }
@@ -192,7 +192,7 @@
                                 <select id="npsn3" name="npsn3" data-placeholder="Sekolah" tabindex="1">
                                     <option value="">---Sekolah---</option>
                                     <?php
-                                        $sekolah = $this->mMaster->TampilData("*", "ms_sekolah", null, null);
+                                        $sekolah = $this->mMaster->TampilData("*", "ms_sekolah", null, null, null);
                                         foreach($sekolah->result() as $row) {
                                             echo "<option value='".$row->npsn."'>".$row->namaSekolah."</option>";
                                         }

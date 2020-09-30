@@ -11,17 +11,17 @@
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="<?php echo base_url(); ?>ElaAdmin-master/images/pnm.png">
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>ElaAdmin-master/images/pnm.png">
+    <link rel="apple-touch-icon" href="<?php echo base_url(); ?>assets/ElaAdmin-master/images/pnm.png">
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/ElaAdmin-master/images/pnm.png">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>ElaAdmin-master/assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>ElaAdmin-master/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/normalize.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap-4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/pixeden-stroke-7-icon/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/ElaAdmin-master/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/ElaAdmin-master/assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
@@ -42,11 +42,11 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-    <script src="<?php echo base_url(); ?>ElaAdmin-master/assets/js/main.js"></script>
+    <script src="<?php echo base_url(); ?>assets/jquery-3.5.1.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/popper.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/bootstrap-4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/jquery.matchHeight-min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/ElaAdmin-master/assets/js/main.js"></script>
 
 </body>
 </html>

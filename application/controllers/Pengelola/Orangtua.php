@@ -14,8 +14,9 @@ class Orangtua extends CI_Controller {
 			"ms_sekolah.npsn" => "= " .$npsn. ""
 		);
 
-		$data['query'] = $this->mMaster->TampilData("*", "ms_orangtua", $join, $where);
-		$this->mMaster->CekAkses($this->session->userdata('akses'));
-		$this->mMaster->LoadPage($this->session->userdata('akses'), 'orangtua', $data);
+		$data['menu'] = $this->mMenu->LoadMenu();
+		$data['submenu'] = $this->mMenu->LoadSubMenu();
+		$data['query'] = $this->mMaster->TampilData("*", "ms_orangtua", $join, null, $where);
+		$this->mMaster->LoadPage('orangtua', $data);
 	}
 }

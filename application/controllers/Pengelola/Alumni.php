@@ -14,8 +14,9 @@ class Alumni extends CI_Controller {
 			"status" => "= 'tidakaktif'"
 		);
 
-		$data['query'] = $this->mMaster->TampilData("*", "ms_siswa", $join, $where);
-		$this->mMaster->CekAkses($this->session->userdata('akses'));
-		$this->mMaster->LoadPage($this->session->userdata('akses'), 'alumni', $data);
+		$data['menu'] = $this->mMenu->LoadMenu();
+		$data['submenu'] = $this->mMenu->LoadSubMenu();
+		$data['query'] = $this->mMaster->TampilData("*", "ms_siswa", $join, null, $where);
+		$this->mMaster->LoadPage('alumni', $data);
 	}
 }
